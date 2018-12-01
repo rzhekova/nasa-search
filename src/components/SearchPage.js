@@ -18,18 +18,18 @@ class SearchPage extends Component {
     );
   }
 
-  //   toggleCheckBoxClick = value => {
-  //     const { assetTypes } = this.state;
-  //     let modifiedAssetTypes = assetTypes.slice();
+  toggleCheckBoxClick = value => {
+    const { assetTypes } = this.state;
+    let modifiedAssetTypes = assetTypes.slice();
 
-  //     if (!assetTypes.includes(value)) {
-  //       modifiedAssetTypes.push(value);
-  //     } else {
-  //       modifiedAssetTypes.splice(modifiedAssetTypes.indexOf(value), 1);
-  //     }
+    if (!assetTypes.includes(value)) {
+      modifiedAssetTypes.push(value);
+    } else {
+      modifiedAssetTypes.splice(modifiedAssetTypes.indexOf(value), 1);
+    }
 
-  //     this.setState({ assetTypes: modifiedAssetTypes });
-  //   };
+    this.setState({ assetTypes: modifiedAssetTypes });
+  };
 }
 
 export default SearchPage;
