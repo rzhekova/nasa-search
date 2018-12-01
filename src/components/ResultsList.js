@@ -2,7 +2,6 @@ import React from "react";
 import ResultsListItem from "./ResultsListItem";
 
 const ResultsList = ({ results }) => {
-  console.log(results);
   return (
     results.length > 0 && (
       <ul>
@@ -12,9 +11,12 @@ const ResultsList = ({ results }) => {
             <ResultsListItem
               key={result.data[0].nasa_id}
               title={result.data[0].title}
-              mediaType={mediaType}
               id={result.data[0].nasa_id}
-              imageUrl={mediaType === "image" ? result.links[0].href : null}
+              imageUrl={
+                mediaType === "image"
+                  ? result.links[0].href
+                  : "https://images.nasa.gov/images/play_btn-sm-2.d350935c.png"
+              }
             />
           );
         })}

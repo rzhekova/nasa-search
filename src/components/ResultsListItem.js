@@ -2,14 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const ResultsListItem = ({ title, imageUrl, id }) => {
-  return imageUrl ? (
+  return (
     <li>
       <Link to={`/asset/${id}`}>
-        <img src={imageUrl} alt={`${title}`} />
+        <img className="list-item-image" src={imageUrl} alt={`${title}`} />
       </Link>
     </li>
-  ) : (
-    <li>audio here</li>
   );
 };
 

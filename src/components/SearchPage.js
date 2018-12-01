@@ -53,7 +53,7 @@ class SearchPage extends Component {
   };
 
   handleChange = searchTerm => {
-    this.setState({ searchTerm }, () => console.log(this.state.searchTerm));
+    this.setState({ searchTerm });
   };
 }
 
