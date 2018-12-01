@@ -16,7 +16,7 @@ class AssetPage extends Component {
   render() {
     const { assetDetails, assetLink } = this.state;
 
-    return assetDetails.data ? (
+    return assetLink ? (
       <div>
         <Asset
           title={assetDetails.data[0].title}
