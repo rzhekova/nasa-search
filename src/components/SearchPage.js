@@ -6,14 +6,20 @@ import ResultsList from "./ResultsList";
 class SearchPage extends Component {
   state = {
     assetTypes: [],
-    searchTerm: ""
+    searchTerm: "",
+    results: []
   };
   render() {
+    const { results } = this.state;
     return (
       <div>
         <SearchPageHeader />
-        <SearchArea toggleCheckBoxClick={this.toggleCheckBoxClick} />
-        <ResultsList />
+        <SearchArea
+          toggleCheckBoxClick={this.toggleCheckBoxClick}
+          handleSubmit={this.handleSubmit}
+          handleChange={this.handleChange}
+        />
+        <ResultsList results={results} />
       </div>
     );
   }
@@ -29,6 +35,25 @@ class SearchPage extends Component {
     }
 
     this.setState({ assetTypes: modifiedAssetTypes });
+  };
+
+  handleSubmit = event => {
+    event.preventDefault();
+    const { assetTypes, searchTerm } = this.state;
+    const URL = `https://images-api.nasa.gov/search?q=${searchTerm}&media_type=${assetTypes.join(
+      ","
+    )}`;
+
+    if (searchTerm && assetTypes.length) {
+      fetch(URL)
+        .then(response => response.json())
+        .then(data => this.setState({ results: data.collection.items }))
+        .catch(error => console.log(error));
+    }
+  };
+
+  handleChange = searchTerm => {
+    this.setState({ searchTerm }, () => console.log(this.state.searchTerm));
   };
 }
 
