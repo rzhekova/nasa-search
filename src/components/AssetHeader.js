@@ -4,7 +4,7 @@ import AssetDescription from "./AssetDescription";
 
 const AssetHeader = ({ title, description }) => {
   return (
-    <div>
+    <div className="asset-header">
       <AssetTitle title={title} />
       <AssetDescription description={description} />
     </div>

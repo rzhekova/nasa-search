@@ -10,7 +10,10 @@ const SearchArea = ({
   searchTerm
 }) => {
   return (
-    <form onSubmit={handleSubmit}>
+    <form
+      className={searchTerm || assetTypes.length ? "form-slide-up" : null}
+      onSubmit={handleSubmit}
+    >
       <input
         type="text"
         name="search"
@@ -18,16 +21,18 @@ const SearchArea = ({
         onChange={event => handleChange(event.target.value)}
       />
       <Button />
-      <CheckBox
-        assetTypes={assetTypes}
-        type="image"
-        toggleCheckBoxClick={toggleCheckBoxClick}
-      />
-      <CheckBox
-        assetTypes={assetTypes}
-        type="audio"
-        toggleCheckBoxClick={toggleCheckBoxClick}
-      />
+      <div className="checkboxes">
+        <CheckBox
+          assetTypes={assetTypes}
+          type="image"
+          toggleCheckBoxClick={toggleCheckBoxClick}
+        />
+        <CheckBox
+          assetTypes={assetTypes}
+          type="audio"
+          toggleCheckBoxClick={toggleCheckBoxClick}
+        />
+      </div>
     </form>
   );
 };

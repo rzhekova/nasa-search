@@ -1,7 +1,11 @@
 import React from "react";
 
 const AssetDescription = ({ description }) => {
-  return <p>{description}</p>;
+  return (
+    <p>
+      <strong>Description:</strong> <i>{description}</i>
+    </p>
+  );
 };
 
 export default AssetDescription;

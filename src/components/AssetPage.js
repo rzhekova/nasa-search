@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import AssetHeader from "./AssetHeader";
 import Asset from "./Asset";
+import SocialFooter from "./SocialFooter";
 
 class AssetPage extends Component {
   state = {
@@ -18,14 +19,23 @@ class AssetPage extends Component {
 
     return assetLink ? (
       <div>
-        <Asset
-          title={assetDetails.data[0].title}
-          mediaType={assetDetails.data[0].media_type}
+        <hr />
+        <div className="top-blue-line" />
+        <div className="asset-page">
+          <Asset
+            title={assetDetails.data[0].title}
+            mediaType={assetDetails.data[0].media_type}
+            assetLink={assetLink}
+          />
+
+          <AssetHeader
+            title={assetDetails.data[0].title}
+            description={assetDetails.data[0].description}
+          />
+        </div>
+        <SocialFooter
           assetLink={assetLink}
-        />
-        <AssetHeader
-          title={assetDetails.data[0].title}
-          description={assetDetails.data[0].description}
+          title={assetDetails.data[0] ? assetDetails.data[0].title : null}
         />
       </div>
     ) : (
