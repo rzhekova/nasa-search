@@ -7,11 +7,12 @@ const SearchArea = ({
   handleSubmit,
   handleChange,
   assetTypes,
-  searchTerm
+  searchTerm,
+  searchCompleted
 }) => {
   return (
     <form
-      className={searchTerm || assetTypes.length ? "form-slide-up" : null}
+      className={assetTypes.length || searchCompleted ? "form-slide-up" : null}
       onSubmit={handleSubmit}
     >
       <input
@@ -31,6 +32,11 @@ const SearchArea = ({
         <CheckBox
           assetTypes={assetTypes}
           type="audio"
+          toggleCheckBoxClick={toggleCheckBoxClick}
+        />
+        <CheckBox
+          assetTypes={assetTypes}
+          type="video"
           toggleCheckBoxClick={toggleCheckBoxClick}
         />
       </div>

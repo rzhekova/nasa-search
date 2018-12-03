@@ -9,7 +9,8 @@ const SearchPage = ({
   handleChange,
   handleSubmit,
   assetTypes,
-  searchTerm
+  searchTerm,
+  searchCompleted
 }) => {
   return (
     <div>
@@ -20,6 +21,7 @@ const SearchPage = ({
         handleChange={handleChange}
         assetTypes={assetTypes}
         searchTerm={searchTerm}
+        searchCompleted={searchCompleted}
       />
 
       <ResultsList results={results} />

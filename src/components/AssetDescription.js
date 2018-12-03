@@ -3,7 +3,7 @@ import React from "react";
 const AssetDescription = ({ description }) => {
   return (
     <p>
-      <strong>Description:</strong> <i>{description}</i>
+      <i>{description}</i>
     </p>
   );
 };

@@ -16,15 +16,19 @@ class AssetPage extends Component {
 
   render() {
     const { assetDetails, assetLink } = this.state;
+    console.log(assetDetails);
 
     return assetLink ? (
       <div>
-        <hr />
         <div className="top-blue-line" />
+        <hr />
         <div className="asset-page">
           <AssetHeader
             title={assetDetails.data[0].title}
             description={assetDetails.data[0].description}
+            keywords={assetDetails.data[0].keywords}
+            center={assetDetails.data[0].center}
+            createdAt={assetDetails.data[0].date_created}
           />
           <Asset
             title={assetDetails.data[0].title}

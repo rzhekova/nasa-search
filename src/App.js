@@ -9,7 +9,8 @@ class App extends Component {
   state = {
     assetTypes: [],
     searchTerm: "",
-    results: []
+    results: [],
+    searchCompleted: false
   };
   render() {
     return (
@@ -26,6 +27,7 @@ class App extends Component {
                 results={this.state.results}
                 searchTerm={this.state.searchTerm}
                 assetTypes={this.state.assetTypes}
+                searchCompleted={this.state.searchCompleted}
               />
             )}
           />
@@ -58,7 +60,12 @@ class App extends Component {
     if (searchTerm && assetTypes.length) {
       fetch(URL)
         .then(response => response.json())
-        .then(data => this.setState({ results: data.collection.items }))
+        .then(data =>
+          this.setState({
+            results: data.collection.items,
+            searchCompleted: true
+          })
+        )
         .catch(error => console.log(error));
     }
   };

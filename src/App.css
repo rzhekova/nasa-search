@@ -7,19 +7,24 @@ body {
 }
 
 h1 {
-  font-size: 3em;
+  font-size: 2.2em;
+  margin: 1px 19px;
+  width: 280px;
+  height: 30px;
+  text-align: left;
+}
+
+header {
   margin: 0;
-  padding: 40px;
-  background: rgb(218, 206, 184);
-  box-shadow: 0px 10px rgb(194, 184, 165), 0px 15px rgb(179, 168, 149);
+  padding: 70px 70px 70px 83px;
+  display: inline-flex;
 }
 
 h2 {
   font-size: 2.5em;
   color: rgb(255, 255, 255);
   width: 75%;
-  /* text-shadow: 0px 0px 1px black; */
-  text-decoration: underline rgb(4, 26, 56);
+  text-shadow: 2px 2px 0px rgb(4, 26, 56);
 }
 
 h3 {
@@ -31,45 +36,44 @@ h3 {
   text-overflow: ellipsis;
 }
 
-/* span {
-  margin: 13px 5px 10px 0px;
-  color: grey;
-} */
+strong {
+  text-shadow: 1px 1px rgb(4, 26, 56);
+}
 
 form {
-  margin-top: 25vh;
+  margin-top: 18vh;
+  margin-bottom: 5vh;
   animation: ease-in;
   transition: 0.7s;
 }
 
 input[type="text"] {
+  -webkit-appearance: none;
   width: 350px;
-  height: 50px;
-  font-size: 18px;
-  padding: 6px 5px;
-  background: rgb(231, 221, 203);
-  border-style: none solid solid none;
+  height: 53px;
+  border-radius: 0;
+  padding: 0;
+  padding: 1px 2px;
+  color: black;
+  background: white;
+  border: 3px solid black;
   text-align: center;
   outline: none;
   animation: ease-in;
   transition: 0.7s;
 }
 
-input[type="text"]:focus {
-  width: 400px;
-}
-
 .form-slide-up {
-  margin-top: 7vh;
+  margin-top: 0px;
 }
 
 button {
-  background: none;
-  padding: 8px 12px;
-  height: 64px;
+  background: white;
+  color: black;
+  padding: 7px 12px;
+  height: 61px;
   margin-left: -2px;
-  border-style: solid;
-  border-color: black;
+  border: 3px solid black;
   outline: none;
   cursor: pointer;
   animation: ease-in;
@@ -103,7 +107,6 @@ input[type="checkbox"]:checked ~ label {
 div.checkboxes {
   display: flex;
   width: 400px;
-  justify-content: center;
   margin: 0 auto;
 }
 
@@ -146,17 +149,38 @@ li {
   height: 100%;
 }
 
-.list-item-audio-wrapper {
+.list-item-media-wrapper {
   background-color: grey;
+  position: relative;
   display: flex;
   justify-content: center;
   height: 315px;
 }
 
-img.list-item-audio-play-button {
-  width: 20%;
-  height: 20%;
+.fa-2x {
+  color: gainsboro;
+  position: absolute;
   align-self: center;
+  margin-left: -7px;
+}
+
+.fa-5x {
+  align-self: center;
+  color: black;
+}
+
+/* page numbers */
+
+nav {
+  margin-bottom: 100px;
+}
+
+.page-number {
+  width: 40px;
+  height: 40px;
+  margin: 1px;
+  border: 2px solid black;
+  transition: none;
 }
 
 /* assets */
@@ -196,12 +220,18 @@ hr {
   top: 0;
 }
 
+.asset-separator {
+  background-color: white;
+  width: 60%;
+  margin: 40px 0px 20px -10px;
+}
+
 .asset-image {
-  width: 600px;
+  width: 30%;
   margin-bottom: 150px;
   justify-self: end;
   align-self: center;
-  left: 1000px;
+  left: 55%;
   top: 160px;
   position: absolute;
   box-shadow: 10px 10px lightblue;
@@ -211,6 +241,7 @@ hr {
 
 .asset-header {
   width: 60%;
+  margin-bottom: 150px;
   text-align: left;
   padding: 23px 50px;
   align-self: center;
@@ -232,10 +263,10 @@ p {
 }
 
 .asset-audio-wrapper {
-  width: 500px;
   height: 140px;
+  width: 34vw;
   position: fixed;
-  left: 1030px;
+  left: 58%;
   top: 245px;
   background: #f1f2f4;
   border: 2px solid rgb(4, 26, 56);
@@ -247,6 +278,18 @@ p {
 audio {
   padding: 40px 0px;
   width: 88%;
+}
+
+.asset-video-wrapper {
+  width: 33vw;
+  height: 20vw;
+  background-color: black;
+  position: fixed;
+  left: 55%;
+  top: 245px;
+  box-shadow: 10px 10px lightblue;
+  animation: ease-in slideright 1s;
+  animation-direction: normal;
 }
 
 footer {
@@ -282,4 +325,196 @@ footer {
 a {
   text-decoration: none;
   color: rgb(4, 26, 56);
+}
+
+@media all and (max-width: 1600px) {
+  ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .asset-image {
+    width: 35%;
+    left: 55%;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+}
+
+@media all and (max-width: 1024px) {
+  ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .list-item-media-wrapper {
+    height: 85%;
+  }
+
+  li {
+    height: 350px;
+    width: 390px;
+  }
+
+  audio {
+    width: 100%;
+    padding: 32px 0px;
+  }
+
+  form {
+    margin-top: 0vh;
+  }
+
+  .asset-audio-wrapper {
+    width: 43vw;
+    height: 120px;
+    left: 54%;
+  }
+
+  .asset-video-wrapper {
+    width: 330px;
+    height: 170px;
+  }
+
+  .asset-audio-wrapper,
+  .asset-video-wrapper {
+    top: 80px;
+  }
+}
+
+@media all and (max-width: 800px) {
+  ul {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 40px;
+    padding: 40px 20px;
+  }
+
+  li {
+    height: 340px;
+    width: 44vw;
+  }
+
+  .asset-image {
+    left: 60%;
+  }
+
+  footer {
+    position: unset;
+    width: unset;
+  }
+}
+
+@media all and (max-width: 600px) {
+  ul {
+    display: list-item;
+    padding: 6%;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  header {
+    padding: 20px;
+    width: 290px;
+  }
+
+  input[type="text"] {
+    width: 240px;
+  }
+
+  div.checkboxes {
+    width: 300px;
+  }
+
+  li {
+    height: 310px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .asset-page {
+    display: flex;
+    width: 100%;
+    margin: 10px 0px;
+    flex-direction: column-reverse;
+  }
+
+  .asset-header {
+    width: unset;
+    height: 100%;
+    padding-bottom: 60px;
+    margin-bottom: 0px;
+  }
+
+  .asset-image {
+    margin-top: 20px;
+    margin-bottom: -20px;
+    width: 300px;
+    position: unset;
+  }
+
+  h2,
+  p {
+    width: 100%;
+  }
+
+  h2 {
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 35px;
+  }
+
+  .asset-separator {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .asset-audio-wrapper,
+  .asset-video-wrapper {
+    position: unset;
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: -20px;
+    width: 80vw;
+  }
+
+  .asset-audio-wrapper {
+    height: 120px;
+  }
+
+  audio {
+    padding: 30px 0px;
+  }
+
+  .asset-video-wrapper {
+    height: 190px;
+  }
+}
+
+@media all and (max-width: 400px) {
+  header {
+    padding: 20px 15px;
+  }
+
+  input[type="text"] {
+    width: 210px;
+  }
+
+  li {
+    height: 310px;
+  }
+
+  div.checkboxes {
+    width: 280px;
+  }
+
+  .asset-image {
+    width: 270px;
+  }
+
+  .asset-header {
+    padding-left: 31px;
+    padding-right: 31px;
+  }
 }
