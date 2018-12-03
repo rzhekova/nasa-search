@@ -22,15 +22,14 @@ class AssetPage extends Component {
         <hr />
         <div className="top-blue-line" />
         <div className="asset-page">
+          <AssetHeader
+            title={assetDetails.data[0].title}
+            description={assetDetails.data[0].description}
+          />
           <Asset
             title={assetDetails.data[0].title}
             mediaType={assetDetails.data[0].media_type}
             assetLink={assetLink}
-          />
-
-          <AssetHeader
-            title={assetDetails.data[0].title}
-            description={assetDetails.data[0].description}
           />
         </div>
         <SocialFooter
