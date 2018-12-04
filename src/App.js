@@ -23,7 +23,6 @@ class App extends Component {
       <div className="App">
         <Switch>
           <Route path="/asset/:id" component={AssetPage} />
-          <Route exact path="/" component={RedirectToSearch} />
           <Route
             path="/search"
             render={() =>
@@ -40,6 +39,7 @@ class App extends Component {
               )
             }
           />
+          <Route exact path="/" component={RedirectToSearch} />
         </Switch>
       </div>
     );
@@ -75,8 +75,8 @@ class App extends Component {
           })
         )
         .catch(error => console.log(error));
-      alert("Please enter your search terms and select media types");
     } else {
+      alert("Please enter your search terms and select media types");
     }
   };
 
