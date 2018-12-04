@@ -440,8 +440,8 @@ a {
   }
 
   header {
-    padding: 20px;
-    width: 290px;
+    padding-top: 40px;
+    padding-bottom: 50px;
   }
 
   input[type="text"] {
@@ -518,10 +518,6 @@ a {
 }
 
 @media all and (max-width: 400px) {
-  header {
-    padding: 20px 15px;
-  }
-
   input[type="text"] {
     width: 210px;
   }

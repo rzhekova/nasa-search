@@ -70,7 +70,8 @@ class App extends Component {
         .then(response => response.json())
         .then(data =>
           this.setState({
-            results: data.collection.items
+            results: data.collection.items,
+            searchCompleted: true
           })
         )
         .catch(error => console.log(error));
