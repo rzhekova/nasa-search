@@ -2,6 +2,8 @@
 
 This is a ReactJS search app developed using [NASA's Image and Video Library API](https://api.nasa.gov/api.html#Images).
 
+Hosted here: [NASA Search](https://floating-caverns-39502.herokuapp.com)
+
 ## Installation
 
 To install, fork and clone this repository.
