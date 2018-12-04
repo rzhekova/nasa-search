@@ -10,12 +10,14 @@ class AssetPage extends Component {
   };
 
   componentDidMount() {
+    const { mediaType } = this.props.location.state;
     const { id } = this.props.match.params;
-    this.fetchAssetData(id);
+    this.fetchAssetData(id, mediaType);
   }
 
   render() {
-    const { assetDetails, assetLink } = this.state;
+    const { assetLink } = this.state;
+    const { assetDetails } = this.props.location.state;
 
     return assetLink ? (
       <div>
@@ -37,7 +39,7 @@ class AssetPage extends Component {
         </div>
         <SocialFooter
           assetLink={assetLink}
-          title={assetDetails.data[0] ? assetDetails.data[0].title : null}
+          title={assetDetails ? assetDetails.data[0].title : null}
         />
       </div>
     ) : (
@@ -45,25 +47,25 @@ class AssetPage extends Component {
     );
   }
 
-  fetchAssetData = id => {
-    const URL = `https://images-api.nasa.gov/search?q=${id}`;
-    fetch(URL)
-      .then(response => response.json())
-      .then(data => {
-        const assetDetails = data.collection.items[0];
-        const mediaType = assetDetails.data[0].media_type;
+  fetchAssetData = (id, mediaType) => {
+    const { assetDetails } = this.props.location.state;
+    const assetUrl =
+      mediaType === "video"
+        ? `https://images-api.nasa.gov/asset/${id}`
+        : assetDetails.href;
 
-        fetch(assetDetails.href, { mode: "cors" })
-          .then(response => response.json())
-          .then(collectionData => {
-            const assetLink =
-              mediaType === "image"
-                ? collectionData.filter(collectionDatum =>
-                    collectionDatum.includes("thumb")
-                  )[0]
-                : collectionData[2];
-            this.setState({ assetDetails, assetLink });
-          });
+    fetch(assetUrl, { mode: "cors" })
+      .then(response => response.json())
+      .then(collectionData => {
+        const assetLink =
+          mediaType === "image"
+            ? collectionData.filter(collectionDatum =>
+                collectionDatum.includes("thumb")
+              )[0]
+            : mediaType === "video"
+            ? collectionData.collection.items[0].href
+            : collectionData[2];
+        this.setState({ assetLink });
       })
       .catch(error => console.log(error));
   };

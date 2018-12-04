@@ -12,8 +12,12 @@ const AssetHeader = ({ title, description, keywords, center, createdAt }) => {
       {keywords && <AssetKeywords keywords={keywords} />}
       {center && <AssetCenter center={center} />}
       {createdAt && <AssetCreatedAt createdAt={createdAt} />}
-      <hr className="asset-separator" />
-      <AssetDescription description={description} />
+      {description && (
+        <div>
+          <hr className="asset-separator" />
+          <AssetDescription description={description} />
+        </div>
+      )}
     </div>
   );
 };

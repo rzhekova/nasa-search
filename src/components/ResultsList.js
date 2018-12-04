@@ -4,6 +4,7 @@ import ResultsListItem from "./ResultsListItem";
 class ResultsList extends Component {
   render() {
     const { results, currentPage, handlePageClick } = this.props;
+
     const itemsPerPage = 12;
 
     const indexOfLastItem = currentPage * itemsPerPage;
@@ -23,8 +24,7 @@ class ResultsList extends Component {
             return (
               <ResultsListItem
                 key={result.data[0].nasa_id}
-                title={result.data[0].title}
-                id={result.data[0].nasa_id}
+                assetDetails={result}
                 mediaType={mediaType}
                 imageUrl={mediaType === "image" ? result.links[0].href : null}
               />

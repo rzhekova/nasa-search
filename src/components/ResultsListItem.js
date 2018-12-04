@@ -1,17 +1,24 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const ResultsListItem = ({ title, imageUrl, id, mediaType }) => {
+const ResultsListItem = ({ assetDetails, imageUrl, mediaType }) => {
+  const { title, nasa_id } = assetDetails.data[0];
+
   return (
     <li>
-      <Link to={`/asset/${id}`}>
+      <Link
+        to={{
+          pathname: `/asset/${nasa_id}`,
+          state: { mediaType, assetDetails }
+        }}
+      >
         <div className="item-wrapper">
           <h3>{title}</h3>
           {mediaType === "audio" || mediaType === "video" ? (
             <div className="list-item-media-wrapper">
-              <i class="fas fa-play fa-5x" />
+              <i className="fas fa-play fa-5x" />
               <i
-                class={
+                className={
                   mediaType === "audio"
                     ? "fas fa-headphones fa-2x"
                     : "fas fa-video fa-2x"

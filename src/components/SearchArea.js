@@ -1,6 +1,7 @@
 import React from "react";
 import CheckBox from "./CheckBox";
 import Button from "./Button";
+import SearchField from "./SearchField";
 
 const SearchArea = ({
   toggleCheckBoxClick,
@@ -15,12 +16,7 @@ const SearchArea = ({
       className={assetTypes.length || searchCompleted ? "form-slide-up" : null}
       onSubmit={handleSubmit}
     >
-      <input
-        type="text"
-        name="search"
-        value={searchTerm}
-        onChange={event => handleChange(event.target.value)}
-      />
+      <SearchField searchTerm={searchTerm} handleChange={handleChange} />
       <Button />
       <div className="checkboxes">
         <CheckBox
