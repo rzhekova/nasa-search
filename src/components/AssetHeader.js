@@ -9,9 +9,9 @@ const AssetHeader = ({ title, description, keywords, center, createdAt }) => {
   return (
     <div className="asset-header">
       <AssetTitle title={title} />
-      <AssetKeywords keywords={keywords} />
-      <AssetCenter center={center} />
-      <AssetCreatedAt createdAt={createdAt} />
+      {keywords && <AssetKeywords keywords={keywords} />}
+      {center && <AssetCenter center={center} />}
+      {createdAt && <AssetCreatedAt createdAt={createdAt} />}
       <hr className="asset-separator" />
       <AssetDescription description={description} />
     </div>

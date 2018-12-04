@@ -10,7 +10,9 @@ const SearchPage = ({
   handleSubmit,
   assetTypes,
   searchTerm,
-  searchCompleted
+  searchCompleted,
+  handlePageClick,
+  currentPage
 }) => {
   return (
     <div>
@@ -23,8 +25,11 @@ const SearchPage = ({
         searchTerm={searchTerm}
         searchCompleted={searchCompleted}
       />
-
-      <ResultsList results={results} />
+      <ResultsList
+        results={results}
+        handlePageClick={handlePageClick}
+        currentPage={currentPage}
+      />
     </div>
   );
 };

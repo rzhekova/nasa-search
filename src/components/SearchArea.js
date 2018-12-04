@@ -23,7 +23,6 @@ const SearchArea = ({
       />
       <Button />
       <div className="checkboxes">
-        {/* <span> select:</span> */}
         <CheckBox
           assetTypes={assetTypes}
           type="image"

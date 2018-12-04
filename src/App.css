@@ -203,6 +203,11 @@ nav {
   transition: none;
 }
 
+.page-number-active {
+  background-color: black;
+  color: white;
+}
+
 /* assets */
 
 @keyframes slideright {

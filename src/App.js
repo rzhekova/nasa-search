@@ -11,33 +11,33 @@ class App extends Component {
     searchTerm: "",
     results: [],
     searchCompleted: false,
-    isLoaded: false
+    isLoaded: false,
+    currentPage: 1
   };
 
   componentDidMount() {
     this.setState({ isLoaded: true });
   }
   render() {
-    const { isLoaded } = this.state;
     return (
       <div className="App">
         <Switch>
           <Route path="/asset/:id" component={AssetPage} />
           <Route
             path="/search"
-            render={() =>
-              isLoaded && (
-                <SearchPage
-                  toggleCheckBoxClick={this.toggleCheckBoxClick}
-                  handleChange={this.handleChange}
-                  handleSubmit={this.handleSubmit}
-                  results={this.state.results}
-                  searchTerm={this.state.searchTerm}
-                  assetTypes={this.state.assetTypes}
-                  searchCompleted={this.state.searchCompleted}
-                />
-              )
-            }
+            render={() => (
+              <SearchPage
+                toggleCheckBoxClick={this.toggleCheckBoxClick}
+                handleChange={this.handleChange}
+                handleSubmit={this.handleSubmit}
+                results={this.state.results}
+                searchTerm={this.state.searchTerm}
+                assetTypes={this.state.assetTypes}
+                searchCompleted={this.state.searchCompleted}
+                handlePageClick={this.handlePageClick}
+                currentPage={this.state.currentPage}
+              />
+            )}
           />
           <Route exact path="/" component={RedirectToSearch} />
         </Switch>
@@ -70,8 +70,7 @@ class App extends Component {
         .then(response => response.json())
         .then(data =>
           this.setState({
-            results: data.collection.items,
-            searchCompleted: true
+            results: data.collection.items
           })
         )
         .catch(error => console.log(error));
@@ -82,6 +81,11 @@ class App extends Component {
 
   handleChange = searchTerm => {
     this.setState({ searchTerm });
+  };
+
+  handlePageClick = event => {
+    window.scrollTo({ top: 200, left: 100, behavior: "smooth" });
+    this.setState({ currentPage: +event.target.id });
   };
 }
 

@@ -2,13 +2,8 @@ import React, { Component } from "react";
 import ResultsListItem from "./ResultsListItem";
 
 class ResultsList extends Component {
-  state = {
-    currentPage: 1
-  };
-
   render() {
-    const { results } = this.props;
-    const { currentPage } = this.state;
+    const { results, currentPage, handlePageClick } = this.props;
     const itemsPerPage = 12;
 
     const indexOfLastItem = currentPage * itemsPerPage;
@@ -38,13 +33,15 @@ class ResultsList extends Component {
         </ul>
 
         <nav>
-          {pageNumbers.map(number => {
+          {pageNumbers.map((number, index) => {
             return (
               <button
-                className="page-number"
+                className={`page-number ${
+                  currentPage === index + 1 ? "page-number-active" : null
+                }`}
                 key={number}
                 id={number}
-                onClick={this.handlePageClick}
+                onClick={handlePageClick}
               >
                 {number}
               </button>
@@ -54,11 +51,6 @@ class ResultsList extends Component {
       </div>
     ) : null;
   }
-
-  handlePageClick = event => {
-    window.scrollTo({ top: 200, left: 100, behavior: "smooth" });
-    this.setState({ currentPage: +event.target.id });
-  };
 }
 
 export default ResultsList;
