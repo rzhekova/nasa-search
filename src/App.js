@@ -65,7 +65,6 @@ class App extends Component {
       fetch(URL)
         .then(response => response.json())
         .then(data => {
-          console.log(data.collection);
           this.setState({
             results: data.collection.items,
             searchCompleted: true
