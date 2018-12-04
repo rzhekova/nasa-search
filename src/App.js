@@ -11,13 +11,9 @@ class App extends Component {
     searchTerm: "",
     results: [],
     searchCompleted: false,
-    isLoaded: false,
     currentPage: 1
   };
 
-  componentDidMount() {
-    this.setState({ isLoaded: true });
-  }
   render() {
     return (
       <div className="App">
@@ -68,12 +64,13 @@ class App extends Component {
     if (searchTerm && assetTypes.length) {
       fetch(URL)
         .then(response => response.json())
-        .then(data =>
+        .then(data => {
+          console.log(data.collection);
           this.setState({
             results: data.collection.items,
             searchCompleted: true
-          })
-        )
+          });
+        })
         .catch(error => console.log(error));
     } else {
       alert("Please enter your search terms and select media types");

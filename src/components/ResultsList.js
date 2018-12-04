@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ResultsListItem from "./ResultsListItem";
+import PageNumbers from "./PageNumbers";
 
 class ResultsList extends Component {
   render() {
@@ -32,22 +33,11 @@ class ResultsList extends Component {
           })}
         </ul>
 
-        <nav>
-          {pageNumbers.map((number, index) => {
-            return (
-              <button
-                className={`page-number ${
-                  currentPage === index + 1 ? "page-number-active" : null
-                }`}
-                key={number}
-                id={number}
-                onClick={handlePageClick}
-              >
-                {number}
-              </button>
-            );
-          })}
-        </nav>
+        <PageNumbers
+          pageNumbers={pageNumbers}
+          currentPage={currentPage}
+          handlePageClick={handlePageClick}
+        />
       </div>
     ) : null;
   }
