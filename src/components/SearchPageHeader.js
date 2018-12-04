@@ -5,10 +5,9 @@ const SearchPageHeader = () => {
     <header>
       <img
         className="nasa-logo"
-        src="https://images.nasa.gov/images/nasa_logo-large.ee501ef4.png"
+        src="/nasa_logo-large.ee501ef4.png"
         alt="NASA logo"
       />
-      <h1>NASA Image and Video Gallery</h1>
     </header>
   );
 };

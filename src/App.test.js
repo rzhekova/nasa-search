@@ -58,16 +58,4 @@ describe("<App />", () => {
 
     expect(state.searchTerm).toEqual("hello");
   });
-
-  it("tests handleSubmit function updates state with search results", async () => {
-    const wrapper = shallow(<App />);
-    wrapper.instance().handleChange("moon");
-    wrapper.instance().toggleCheckBoxClick("image");
-    const event = { preventDefault: jest.fn() };
-    wrapper.instance().handleSubmit(event);
-
-    // const state = wrapper.state();
-
-    // expect(state.results).toEqual(2);
-  });
 });

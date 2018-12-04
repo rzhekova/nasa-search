@@ -10,26 +10,34 @@ class App extends Component {
     assetTypes: [],
     searchTerm: "",
     results: [],
-    searchCompleted: false
+    searchCompleted: false,
+    isLoaded: false
   };
+
+  componentDidMount() {
+    this.setState({ isLoaded: true });
+  }
   render() {
+    const { isLoaded } = this.state;
     return (
       <div className="App">
         <Switch>
           <Route path="/asset/:id" component={AssetPage} />
           <Route
             path="/search"
-            render={() => (
-              <SearchPage
-                toggleCheckBoxClick={this.toggleCheckBoxClick}
-                handleChange={this.handleChange}
-                handleSubmit={this.handleSubmit}
-                results={this.state.results}
-                searchTerm={this.state.searchTerm}
-                assetTypes={this.state.assetTypes}
-                searchCompleted={this.state.searchCompleted}
-              />
-            )}
+            render={() =>
+              isLoaded && (
+                <SearchPage
+                  toggleCheckBoxClick={this.toggleCheckBoxClick}
+                  handleChange={this.handleChange}
+                  handleSubmit={this.handleSubmit}
+                  results={this.state.results}
+                  searchTerm={this.state.searchTerm}
+                  assetTypes={this.state.assetTypes}
+                  searchCompleted={this.state.searchCompleted}
+                />
+              )
+            }
           />
           <Route exact path="/" component={RedirectToSearch} />
         </Switch>
@@ -67,6 +75,8 @@ class App extends Component {
           })
         )
         .catch(error => console.log(error));
+    } else {
+      alert("Please enter your search terms and select media types");
     }
   };
 

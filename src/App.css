@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,600|Suez+One");
+
 .App {
   text-align: center;
 }
@@ -6,18 +8,30 @@ body {
   background: rgb(231, 221, 203);
 }
 
-h1 {
-  font-size: 2.2em;
-  margin: 1px 19px;
-  width: 280px;
-  height: 30px;
-  text-align: left;
+h2,
+h3,
+h4,
+strong {
+  font-family: "Suez One", serif;
+  letter-spacing: 2px;
+}
+
+strong,
+h3 {
+  letter-spacing: 1.1px;
+}
+
+p,
+label {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
 }
 
 header {
   margin: 0;
   padding: 70px 70px 70px 83px;
   display: inline-flex;
+  height: 88px;
 }
 
 h2 {
@@ -36,8 +50,15 @@ h3 {
   text-overflow: ellipsis;
 }
 
+h4 {
+  font-size: 30px;
+  margin: 80px;
+}
+
 strong {
-  text-shadow: 1px 1px rgb(4, 26, 56);
+  /* text-shadow: 1px 1px rgb(4, 26, 56); */
+  /* color: whitesmoke; */
+  font-size: 18px;
 }
 
 form {
@@ -83,7 +104,6 @@ button {
 
 button:hover {
   background-color: black;
-  border: 2px solid black;
   color: white;
 }
 

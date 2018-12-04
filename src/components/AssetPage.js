@@ -42,7 +42,7 @@ class AssetPage extends Component {
         />
       </div>
     ) : (
-      "Loading..."
+      <h4>Loading...</h4>
     );
   }
 
