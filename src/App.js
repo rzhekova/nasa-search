@@ -67,7 +67,8 @@ class App extends Component {
         .then(data => {
           this.setState({
             results: data.collection.items,
-            searchCompleted: true
+            searchCompleted: true,
+            currentPage: 1
           });
         })
         .catch(error => console.log(error));
